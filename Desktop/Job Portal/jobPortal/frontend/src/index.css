@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,600&family=Inter:wght@400;450;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #F5F2EC;
+  color: #1C1917;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* hide cursor for touch devices */
+@media (hover: none) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
+
+::selection { background: rgba(168,120,32,0.2); color: #1C1917; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F5F2EC; }
+::-webkit-scrollbar-thumb { background: #CBC5BC; border-radius: 8px; border: 2px solid #F5F2EC; }
+::-webkit-scrollbar-thumb:hover { background: #A87820; }
+
+:focus-visible { outline: 2px solid #A87820; outline-offset: 2px; }
+
+/* Custom cursor */
+
+
+/* Grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.6;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #A87820 0%, #D4A843 45%, #A87820 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shimmer skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #EDE9E0 25%, #F5F2EC 50%, #EDE9E0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Warm card surface */
+.card-surface {
+  background: #FFFFFF;
+  border: 1px solid #E5E0D8;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(28,25,23,0.04), 0 4px 16px rgba(28,25,23,0.06);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.card-surface:hover {
+  box-shadow: 0 4px 12px rgba(28,25,23,0.08), 0 20px 48px rgba(28,25,23,0.12);
+  border-color: #CBC5BC;
+}
+
+/* Smooth interactive buttons */
+a,
+button {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
